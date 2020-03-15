@@ -2,36 +2,43 @@
 snippet     if
 options     head
 abbr        if () {}
-    if (${1:#:condition}) {
+    if (${1:#:condition})
+    {
         ${0:TARGET}
     }
 
 # No head option in else/elseif so it can be expanded after "}"
 snippet     else
 abbr        else {}
-    else {
+    else
+    {
         ${0:TARGET}
     }
 
 snippet     elseif
 abbr        else () {}
-    else if (${1:#:condition}) {
+    else if (${1:#:condition})
+    {
         ${0:TARGET}
     }
 
 snippet     ifelse
 options     head
 abbr        if () {} else {}
-    if (${1:#:condition}) {
+    if (${1:#:condition})
+    {
         ${2:TARGET}
-    } else {
+    }
+    else
+    {
         ${3}
     }
 
 snippet     for
 options     head
 abbr        for () {}
-    for (${1:int} ${2:i} = ${3:0}; $2 < ${4}; $2++) {
+    for (${1:int} ${2:i} = ${3:0}; $2 < ${4}; $2++)
+    {
         ${0:#:TARGET}
     }
 
@@ -39,7 +46,8 @@ abbr        for () {}
 snippet     fori
 options     head
 abbr        for (int x;...; x++) {}
-    for (int ${1:i} = 0; $1 < ${2}; $1++) {
+    for (int ${1:i} = 0; $1 < ${2}; $1++)
+    {
         ${0:#:TARGET}
     }
 
@@ -47,28 +55,32 @@ abbr        for (int x;...; x++) {}
 snippet     forri
 options     head
 abbr        for (int x; ...; x--) {}
-    for (int ${1:i} = ${2}; $1 >= 0; $1--) {
+    for (int ${1:i} = ${2}; $1 >= 0; $1--)
+    {
         ${0:#:TARGET}
     }
 
 snippet     while
 options     head
 abbr        while () {}
-    while (${1:#:condition}) {
+    while (${1:#:condition})
+    {
         ${0:TARGET}
     }
 
 snippet     do_while
 options     head
 alias       do
-    do {
+    do
+    {
         ${0:TARGET:code}
     } while (${1:#:condition});
 
 snippet     switch
 options     head
 abbr        switch () {}
-	switch (${1:#:var}) {
+	switch (${1:#:var})
+  {
 		case ${2:#:val}:
 			${0:TARGET}
 			break;
@@ -88,32 +100,36 @@ snippet conditional
 # }}}
 
 # Definition bodies {{{
-snippet     function
+snippet     fun
 options     head
 alias       func
 abbr        func() {}
-    ${1:void} ${2:#:func_name}(${3:void}) {
+    ${1:void} ${2:#:func_name}(${3:void})
+    {
         ${0:TARGET}
     }
 
 snippet     struct
 options     head
 abbr        struct {}
-    struct ${1:#:name} {
+    struct ${1:#:name}
+    {
         ${0:TARGET:data}
     };
 
 # Typedef struct
 snippet     struct_typedef
 options     head
-    typedef struct ${1:#:name} {
+    typedef struct ${1:#:name}
+    {
         ${0:TARGET:data}
     };
 
 snippet     enum
 options     head
 abbr        enum {}
-    enum ${1:#:name} {
+    enum ${1:#:name}
+    {
         ${0:TARGET}
     };
 
@@ -286,24 +302,57 @@ abbr    va_start(va_list, last_arg); ... ; va_end()
 # }}}
 
 # Comments {{{
-snippet comment
-alias   /*
-    /* ${1:#:comment} */
+snippet cmt
+    //
+    // ${1:#:comment}
+    //
     ${0}
 
-snippet     doxy
+snippet     doc
 abbr        /** @brief ...
 options     head
-    /**
-     * @brief    ${1:function description}
-     *
-     * @details  ${2:detailed description}
-     *
-     * @param    ${3:param}
-     *
-     * @return   ${4:return type}
-     */
+    //
+    // @brief    ${1:function description}
+    //
+    // @details  ${2:detailed description}
+    //
+    // @param    ${3:param}
+    //
+    // @return   ${4:return type}
+    //
 
+# }}}
+
+# Licenses {{{
+
+snippet bsd
+abbr BSD-license template
+    // BSD 2-Clause License
+
+    // Copyright (c) 2020, Ruan Evangelista Formigoni
+    // All rights reserved.
+
+    // Redistribution and use in source and binary forms, with or without
+    // modification, are permitted provided that the following conditions are met:
+
+    // * Redistributions of source code must retain the above copyright notice, this
+    //   list of conditions and the following disclaimer.
+
+    // * Redistributions in binary form must reproduce the above copyright notice,
+    //   this list of conditions and the following disclaimer in the documentation
+    //   and/or other materials provided with the distribution.
+
+    // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+    // AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    // IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    // DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+    // FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+    // DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    // SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+    // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    ${1}
 # }}}
 
 # vim: fdm=marker

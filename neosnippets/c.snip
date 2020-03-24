@@ -5,7 +5,7 @@ abbr        if () {}
     if (${1:#:condition})
     {
         ${0:TARGET}
-    }
+    } // if
 
 # No head option in else/elseif so it can be expanded after "}"
 snippet     else
@@ -13,14 +13,14 @@ abbr        else {}
     else
     {
         ${0:TARGET}
-    }
+    } // else
 
 snippet     elseif
 abbr        else () {}
     else if (${1:#:condition})
     {
         ${0:TARGET}
-    }
+    } // else if
 
 snippet     ifelse
 options     head
@@ -28,11 +28,11 @@ abbr        if () {} else {}
     if (${1:#:condition})
     {
         ${2:TARGET}
-    }
+    } // if
     else
     {
         ${3}
-    }
+    } // else
 
 snippet     for
 options     head
@@ -40,25 +40,7 @@ abbr        for () {}
     for (${1:int} ${2:i} = ${3:0}; $2 < ${4}; $2++)
     {
         ${0:#:TARGET}
-    }
-
-# Counter based for's (don't ask for the type or count start)
-snippet     fori
-options     head
-abbr        for (int x;...; x++) {}
-    for (int ${1:i} = 0; $1 < ${2}; $1++)
-    {
-        ${0:#:TARGET}
-    }
-
-# For reverse counter
-snippet     forri
-options     head
-abbr        for (int x; ...; x--) {}
-    for (int ${1:i} = ${2}; $1 >= 0; $1--)
-    {
-        ${0:#:TARGET}
-    }
+    } // for: $2
 
 snippet     while
 options     head
@@ -66,7 +48,7 @@ abbr        while () {}
     while (${1:#:condition})
     {
         ${0:TARGET}
-    }
+    } // while: $1
 
 snippet     do_while
 options     head
@@ -74,24 +56,25 @@ alias       do
     do
     {
         ${0:TARGET:code}
-    } while (${1:#:condition});
+    } // do
+    while (${1:#:condition});
 
 snippet     switch
 options     head
 abbr        switch () {}
 	switch (${1:#:var})
   {
-		case ${2:#:val}:
-			${0:TARGET}
-			break;
-	}
+		${0:TARGET}
+	} // switch: $1
 
 snippet     case
 options     head
 abbr        case: break;
 	case ${1}:
+  {
 		${0}
 		break;
+  } // case: $1
 
 # Ternary conditional operator
 snippet conditional
@@ -107,7 +90,7 @@ abbr        func() {}
     ${1:void} ${2:#:func_name}(${3:void})
     {
         ${0:TARGET}
-    }
+    } // functin: $2
 
 snippet     struct
 options     head
@@ -115,7 +98,7 @@ abbr        struct {}
     struct ${1:#:name}
     {
         ${0:TARGET:data}
-    };
+    }; // struct: $1
 
 # Typedef struct
 snippet     struct_typedef
@@ -123,7 +106,7 @@ options     head
     typedef struct ${1:#:name}
     {
         ${0:TARGET:data}
-    };
+    }; // typedef struct: $1
 
 snippet     enum
 options     head
@@ -131,7 +114,7 @@ abbr        enum {}
     enum ${1:#:name}
     {
         ${0:TARGET}
-    };
+    }; // enum: $1
 
 # hard-tab is necessary; C indent doesn't support this.
 snippet     main
@@ -140,16 +123,7 @@ options     head
 	{
 		${0:TARGET}
 		return 0;
-	}
-
-snippet     helloworld
-options     head
-    #include <stdio.h>
-    int main(int argc, char const* argv[])
-    {
-        puts("hello, world!");
-        return 0;
-    }
+	} // main
 
 # }}}
 
@@ -312,14 +286,19 @@ snippet     doc
 abbr        /** @brief ...
 options     head
     //
-    // @brief    ${1:function description}
+    // @ date    `strftime("%B %d, %Y")`
     //
-    // @details  ${2:detailed description}
+    // @brief    ${1:#:function description}
     //
-    // @param    ${3:param}
+    // @details  ${2:#:detailed description}
     //
-    // @return   ${4:return type}
+    // @param    ${3:#:param}
     //
+    // @return   ${4:#:return type}
+    //
+
+    // LICENSE
+    ${5:license}
 
 # }}}
 

@@ -1,0 +1,27 @@
+snippet     y
+abbr        y=""
+  y="${1}"${0}
+
+snippet     x
+abbr        x=""
+  x="${1}"${0}
+
+snippet     wd
+abbr        width=""
+  width="${1}"${0}
+
+snippet     ht
+abbr        height=""
+  height="${1}"${0}
+
+snippet     rect
+abbr        <rect/>
+  <rect x="${1}" y="${2}" width="${3}" height="${4}" fill="${5}"/>${0}
+
+snippet     circ
+abbr        <circle/>
+  <circle cx="${1}" cy="${2}" r="${3}" fill="${4}"/>${0}
+
+snippet     text
+abbr        <text/>
+  <text x="${1}" y="${2}" class="${3:small}">${4}</text>${0}

@@ -102,8 +102,34 @@ abbr        #include<iostream> int main...
     {
         std::cout << "hello, world!" << std::endl;
         return 0;
-    }
+    } // main
 
 snippet     print
 options     head
   std::cout << ${1:TARGET} << std::endl; ${0}
+
+
+# Tests {{{
+snippet     testcase
+abbr        TEST_CASE
+alias       tc
+  TEST_CASE(${1})
+  {
+    ${0}
+  } // TEST_CASE: $1
+
+snippet     subcase
+abbr        SUBCASE
+alias       sc
+  SUBCASE(${1})
+  {
+    ${0}
+  } // SUBCASE: $1
+
+# }}}
+
+
+
+
+# vim: fdm=marker
+

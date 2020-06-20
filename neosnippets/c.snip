@@ -132,13 +132,13 @@ options     head
 snippet     inc
 options     head
 alias       #inc, #include
-    #include <${1:stdio}.h>
+    #include <${1:#:header}>
 
 # #include "..."
-snippet     inc2
+snippet     incq
 options     head
-alias       #inc2, #include2
-    #include "${1}.h"
+alias       #incq, #includeq
+    #include "${1}"
 
 snippet     #if
 options     head

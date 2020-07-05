@@ -1,3 +1,5 @@
+include license.snip
+
 # Control structures {{{
 snippet     if
 options     head
@@ -5,7 +7,7 @@ abbr        if () {}
     if (${1:#:condition})
     {
         ${0:TARGET}
-    } // if
+    } // if $1
 
 # No head option in else/elseif so it can be expanded after "}"
 snippet     else
@@ -20,7 +22,7 @@ abbr        else () {}
     else if (${1:#:condition})
     {
         ${0:TARGET}
-    } // else if
+    } // else if $1
 
 snippet     ifelse
 options     head
@@ -28,7 +30,7 @@ abbr        if () {} else {}
     if (${1:#:condition})
     {
         ${2:TARGET}
-    } // if
+    } // if $1
     else
     {
         ${3}
@@ -37,10 +39,10 @@ abbr        if () {} else {}
 snippet     for
 options     head
 abbr        for () {}
-    for (${1:int} ${2:i} = ${3:0}; $2 < ${4}; $2++)
+    for (${1:auto&&} ${2:i}{${3:}}; $2 ${4}; ++$2)
     {
         ${0:#:TARGET}
-    } // for: $2
+    } // for: $2 $4
 
 snippet     while
 options     head
@@ -56,7 +58,7 @@ alias       do
     do
     {
         ${0:TARGET:code}
-    } // do
+    } // do $1
     while (${1:#:condition});
 
 snippet     switch
@@ -77,7 +79,10 @@ abbr        case: break;
   } // case: $1
 
 # Ternary conditional operator
-snippet conditional
+snippet ternary
+alias trn
+options word
+abbr (a < b) ? a : b;
     (${1:#:condition}) ? ${2:#:a} : ${3:#:b}
 
 # }}}
@@ -87,7 +92,7 @@ snippet     fn
 options     head
 alias       func
 abbr        func() {}
-    ${1:void} ${2:#:func_name}(${3:void})
+    ${1:decltype(auto)} ${2:fn}(${3:void})
     {
         ${0:TARGET}
     } // function: $2
@@ -122,7 +127,7 @@ options     head
 	int main(int argc, char const* argv[])
 	{
 		${0:TARGET}
-		return 0;
+		return EXIT_SUCCESS;
 	} // main
 
 # }}}
@@ -144,7 +149,7 @@ snippet     #if
 options     head
     #if ${1}
     ${0}
-    #endif
+    #endif // $1
 
 snippet     ifdef
 options     head
@@ -152,7 +157,7 @@ alias       #ifdef
 abbr        #ifdef ... #endif
     #ifdef ${1:#:SYMBOL}
     ${0}
-    #endif
+    #endif // $1
 
 snippet     ifndef
 options     head
@@ -160,7 +165,7 @@ alias       #ifndef
 abbr #ifndef ... #define ... #endif
     #ifndef $1
     #define ${1:#:SYMBOL}
-    #endif${0}
+    #endif${0} // $1
 
 # This snippet used the placeholder instead of a trailing space
 snippet     def
@@ -177,7 +182,7 @@ abbr #ifndef ... #define ... #endif
         #define $1
 
         ${0:TARGET}
-    #endif /* end of include guard */
+    #endif // $1: end of include guard
 
 # }}}
 
@@ -302,36 +307,5 @@ options     head
 
 # }}}
 
-# Licenses {{{
-
-snippet bsd
-abbr BSD-license template
-    // BSD 2-Clause License
-
-    // Copyright (c) 2020, Ruan Evangelista Formigoni
-    // All rights reserved.
-
-    // Redistribution and use in source and binary forms, with or without
-    // modification, are permitted provided that the following conditions are met:
-
-    // * Redistributions of source code must retain the above copyright notice, this
-    //   list of conditions and the following disclaimer.
-
-    // * Redistributions in binary form must reproduce the above copyright notice,
-    //   this list of conditions and the following disclaimer in the documentation
-    //   and/or other materials provided with the distribution.
-
-    // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-    // AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-    // IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    // DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-    // FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-    // DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-    // SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-    // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-    // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ${1}
-# }}}
 
 # vim: fdm=marker

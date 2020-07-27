@@ -3,55 +3,63 @@
 snippet     fn
 abbr        fn () {}
 options     head
-    fn ${1:#:func_name}(${2:#:args}) {
-        ${0:TARGET}
-    }
+    fn ${1:#:func_name}(${2:#:args})
+    {
+      ${0:TARGET}
+    } // fn: $1
 
 snippet     fn-
 abbr        fn () {}
 options     head
-    fn ${1:#:func_name}(${2:#:args}) -> ${3:#:()} {
-        ${0:TARGET}
-    }
+    fn ${1:#:func_name}(${2:#:args}) -> ${3:#:()}
+    {
+      ${0:TARGET}
+    } // fn: $1
 
 snippet     pubfn
 abbr        pubfn () {}
 options     head
-    pub fn ${1:#:func_name}(${2:#:args}) -> ${3:#:()} {
-        ${0:TARGET}
-    }
+    pub fn ${1:#:func_name}(${2:#:args}) -> ${3:#:()}
+    {
+      ${0:TARGET}
+    } // fn: $1
 
 snippet     test
 options     head
     #[test]
-    fn ${1:#:test_function_name}() {
-        ${0:TARGET}
-    }
+    fn ${1:#:test_function_name}()
+    {
+      ${0:TARGET}
+    } // fn: $1
 
 snippet     pubnew
 abbr        pub fn new() {}
 options     head
-    pub fn new(${1}) -> ${2:#:Name} {
-        ${0:TARGET}
-    }
+    pub fn new(${1}) -> ${2:#:Name}
+    {
+      ${0:TARGET}
+    } // fn: $1
 
 snippet     impl
 options     head
-    impl ${1} {
-        ${0:TARGET}
-    }
+    impl ${1}
+    {
+      ${0:TARGET}
+    } // impl: $1
 
 snippet     implfor
 options     head
-    impl ${1} for ${2} {
-        ${0:TARGET}
-    }
+    impl ${1} for ${2}
+    {
+      ${0:TARGET}
+    } // impl: $1 for $2
 
 snippet     trait
 options     head
-    trait ${1} {
-        ${0:TARGET}
-    }
+    trait ${1}
+    {
+      ${0:TARGET}
+    } // trait: $1
 
 # macros
 
@@ -60,8 +68,9 @@ snippet     macro
 
 snippet     bfl
 abbr        bitflags!
-    bitflags! {
-        ${0:TARGET}
+    bitflags!
+    {
+      ${0:TARGET}
     }
 
 snippet     pln
@@ -78,7 +87,7 @@ snippet     ec
 abbr        extern crate
 options     head
     extern crate ${0:TARGET};
-    
+
 snippet     ecl
 abbr        extern crate log
 options     head
@@ -97,47 +106,57 @@ options     head
 
 snippet     mod
 options     head
-    mod ${1:#:mod_name} {
-        ${0:TARGET}
-    }
+    mod ${1:#:mod_name}
+    {
+      ${0:TARGET}
+    } // mod: $1
 
 snippet     let
     let ${1:TARGET} = ${2};${3}
 
 snippet     if
 abbr        if {}
-    if ${1:#:condition} {
-        ${0:TARGET}
-    }
+    if ${1:#:condition}
+    {
+      ${0:TARGET}
+    } // if: $1
 
 snippet else
-    else {
-        ${0:TARGET}
-    }
+    else
+    {
+      ${0:TARGET}
+    } // else
 
 snippet elseif
-    } else if (${1:#:condition}) {
-        ${0:TARGET}
+    }
+    else if (${1:#:condition})
+    {
+      ${0:TARGET}
     }
 
 snippet     ifelse
 abbr        if () {} else {}
-    if ${1:#:condition} {
-        ${2:TARGET}
-    } else {
-        ${3}
-    }
+    if ${1:#:condition}
+    {
+      ${2:TARGET}
+    } // if: $1
+    else
+    {
+      ${3}
+    } // else
 
 snippet     forin
 abbr        forin  {}
-    for ${1} in ${2} {
-        ${0:TARGET}
-    }
+    for ${1} in ${2}
+    {
+      ${0:TARGET}
+    } // for $1 in $2
 
 snippet     match
-    match ${1:TARGET} {
-        ${2:#:pattern} => ${3:#expr},${4}
-    }
+    match ${1:TARGET}
+    {
+      ${2:#:pattern} => ${3:#expr},${4}
+    } // match: $1
 
 snippet     mcase
 alias       case
@@ -147,22 +166,25 @@ alias       case
 
 snippet     struct
 options     head
-    struct ${1} {
-        ${0:TARGET}
-    }
+    struct ${1}
+    {
+      ${0:TARGET}
+    } // struct: $1
 
 snippet     pubstruct
 abbr        pub struct
 options     head
-    pub struct ${1} {
-        ${0:TARGET}
-    }
+    pub struct ${1}
+    {
+      ${0:TARGET}
+    } // pub struct: $1
 
 snippet     enum
 options     head
-    enum ${1} {
-        ${0:TARGET}
-    }
+    enum ${1}
+    {
+      ${0:TARGET}
+    } // enum $1
 
 snippet     opt
 abbr        Option<A>

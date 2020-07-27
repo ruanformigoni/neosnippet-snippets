@@ -1,5 +1,18 @@
 include c.snip
 
+snippet concept
+alias cpt
+abbr concept = Integral<T>
+    template<typename ${1}>
+    concept = ${2}
+    ${0}
+
+snippet require
+alias req
+abbr require(T t) { t + t };
+    requires(T t) { ${1} };
+    ${0}
+
 snippet     tpl
 abbr        template <T>
     template<typename ${1:T}> ${0}
@@ -42,10 +55,10 @@ abbr        try catch
 snippet     foreach
 options     head
 abbr        for (:) {}
-    for (${1:auto&& }${2:var} : ${3:container})
+    for (${1:auto&&} ${2:var} : ${3:container})
     {
         ${0:TARGET}
-    } // for $3
+    } // for $2 : $3
 
 # lambda expression ( C++11 feature )
 snippet     alamb
@@ -104,9 +117,13 @@ abbr        #include<iostream> int main...
         return 0;
     } // main
 
-snippet     print
-options     head
+snippet     cout
+options     word
   std::cout << ${1:TARGET} << std::endl; ${0}
+
+snippet     cerr
+options     word
+  std::cerr << ${1:TARGET} << std::endl; ${0}
 
 
 # Tests {{{
@@ -132,4 +149,3 @@ alias       sc
 
 
 # vim: fdm=marker
-

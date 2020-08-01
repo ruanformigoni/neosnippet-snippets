@@ -1,147 +1,148 @@
 include c.snip
 
 snippet concept
-alias cpt
-abbr concept = Integral<T>
-    template<typename ${1}>
-    concept = ${2}
-    ${0}
+alias cp
+options word
+abbr concept Integral<T>
+ template<typename ${1}>
+ concept ${2} = ${3}
+ ${0}
 
 snippet require
 alias req
 abbr require(T t) { t + t };
-    requires(T t) { ${1} };
-    ${0}
+  requires(T t) { ${1} };
+  ${0}
 
-snippet     tpl
+snippet     tp
 abbr        template <T>
-    template<typename ${1:T}> ${0}
+  template<typename ${1:T}> ${0}
 
 snippet     class
 options     head
 abbr        class {}
-    class ${1:#:name}
-    {
-        ${2}
-    }; // class: $1
+  class ${1:#:name}
+  {
+    ${2}
+  }; // class: $1
 
 snippet     cclass
 options     head
 abbr        class {}
-    class ${1:#:name}
-    {
-        ${2}
-    public:
-        $1(${3});
-    };
-    $1::$1($3)
-    {
-        ${0:TARGET}
-    } // class: $1
+  class ${1:#:name}
+  {
+    ${2}
+  public:
+    $1(${3});
+  };
+  $1::$1($3)
+  {
+    ${0:TARGET}
+  } // class: $1
 
 snippet     try
 options     head
 abbr        try catch
-    try
-    {
-        ${1:#:TARGET}
-    } // try
-    catch (${2:...})
-    {
-        ${3}
-    } // catch: $1
+  try
+  {
+    ${1:#:TARGET}
+  } // try
+  catch (${2:...})
+  {
+    ${3}
+  } // catch: $1
 
 # range based for ( C++11 feature )
 snippet     foreach
 options     head
 abbr        for (:) {}
-    for (${1:auto&&} ${2:var} : ${3:container})
-    {
-        ${0:TARGET}
-    } // for $2 : $3
+  for (${1:auto&&} ${2:var} : ${3:container})
+  {
+    ${0:TARGET}
+  } // for $2 : $3
 
 # lambda expression ( C++11 feature )
 snippet     alamb
 abbr        [](){}
-    [${1}](${2})${3}{ ${4:TARGET} }${0:;}
+  [${1}](${2})${3}{ ${4:TARGET} }${0:;}
 
 snippet     lamb
 abbr        [](){}
-    auto ${1:VAR} = [${2}](${3})${4}{ ${5:TARGET} }${0:;}
+  auto ${1:VAR} = [${2}](${3})${4}{ ${5:TARGET} }${0:;}
 
 # scoped enumeration ( C++11 feature )
 snippet     enum_scoped
 options     head
 abbr        enum struct {};
-    enum struct ${1:#:name}
-    {
-      ${2:#:TARGET}
-    } $1;
+  enum struct ${1:#:name}
+  {
+   ${2:#:TARGET}
+  } $1;
 
 # static assert ( C++11 feature )
 snippet     sa
 abbr        static_assert(,"")
-    static_assert( ${1}, "${2}" );${0}
+  static_assert( ${1}, "${2}" );${0}
 
 options     head
 snippet     ns
 abbr        namespace {}
-    namespace ${1:#:name}
-    {
-        ${0:TARGET}
-    } // namespace $1
+  namespace ${1:#:name}
+  {
+    ${0:TARGET}
+  } // namespace $1
 
 snippet     sc
 abbr        static_cast<>()
-    static_cast<${1}>(${2})${0}
+  static_cast<${1}>(${2})${0}
 
 snippet     rc
 abbr        reinterpret_cast<>()
-    reinterpret_cast<${1}>(${2})${0}
+  reinterpret_cast<${1}>(${2})${0}
 
 snippet     cc
 abbr        const_cast<>()
-    const_cast<${1}>(${2})${0}
+  const_cast<${1}>(${2})${0}
 
 snippet     dc
 abbr        dynamic_cast<>()
-    dynamic_cast<${1}>(${2})${0}
+  dynamic_cast<${1}>(${2})${0}
 
 snippet     main
 abbr        #include<iostream> int main...
-    #include <iostream>
+  #include <iostream>
 
-    int main(int argc, char const* argv[])
-    {
-        std::cout << "hello, world!" << std::endl;
-        return 0;
-    } // main
+  int main(int argc, char const* argv[])
+  {
+    std::cout << "hello, world!" << std::endl;
+    return 0;
+  } // main
 
 snippet     cout
 options     word
-  std::cout << ${1:TARGET} << std::endl; ${0}
+ std::cout << ${1:TARGET} << std::endl; ${0}
 
 snippet     cerr
 options     word
-  std::cerr << ${1:TARGET} << std::endl; ${0}
+ std::cerr << ${1:TARGET} << std::endl; ${0}
 
 
 # Tests {{{
 snippet     testcase
 abbr        TEST_CASE
 alias       tc
-  TEST_CASE(${1})
-  {
-    ${0}
-  } // TEST_CASE: $1
+ TEST_CASE(${1})
+ {
+  ${0}
+ } // TEST_CASE: $1
 
 snippet     subcase
 abbr        SUBCASE
 alias       sc
-  SUBCASE(${1})
-  {
-    ${0}
-  } // SUBCASE: $1
+ SUBCASE(${1})
+ {
+  ${0}
+ } // SUBCASE: $1
 
 # }}}
 

@@ -73,9 +73,9 @@ abbr        bitflags!
       ${0:TARGET}
     }
 
-snippet     pln
+snippet     pr
 abbr        println!
-    println!(${1:"\{\}"}, ${0:TARGET});
+    println!("${1:\{\}}", ${0:TARGET});
 
 snippet     fm
 abbr        format!

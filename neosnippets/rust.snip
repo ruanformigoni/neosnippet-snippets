@@ -1,3 +1,5 @@
+# vim: set expandtab fdm=marker ts=2 sw=2 tw=100 et :
+
 # functions
 
 snippet     fn
@@ -75,11 +77,11 @@ abbr        bitflags!
 
 snippet     pr
 abbr        println!
-    println!("${1:\{\}}", ${0:TARGET});
+    println!("${1:\{\}}", ${2:#:value});${0}
 
 snippet     fm
 abbr        format!
-    format!("${1:\{\}}", ${0:TARGET});
+    format!("${2:\{\}}", ${1:#:value});${0}
 
 # attributes
 
@@ -113,6 +115,10 @@ options     head
 
 snippet     let
     let ${1:TARGET} = ${2};${3}
+
+snippet     letmut
+alias        lm
+    let mut ${1:TARGET} = ${2};${3}
 
 snippet     if
 abbr        if {}
@@ -151,6 +157,22 @@ abbr        forin  {}
     {
       ${0:TARGET}
     } // for $1 in $2
+
+snippet     while
+alias       wh
+abbr        while  {}
+    while ${1}
+    {
+      ${0:TARGET}
+    } // while $1
+
+snippet     whilelet
+alias       wl
+abbr        while let  {}
+    while let ${1}
+    {
+      ${0:TARGET}
+    } // while let $1
 
 snippet     match
     match ${1:TARGET}
@@ -193,3 +215,17 @@ abbr        Option<A>
 snippet     res
 abbr        Result<A, B>
     Result<${1:#:~str}, ${2:#:()}>${3}
+
+snippet string
+alias   st
+options word
+abbr    String::
+  String::${0}
+
+# Comments
+
+snippet fdm
+alias fd
+  // ${1} {{{
+  ${2}
+  // }}}

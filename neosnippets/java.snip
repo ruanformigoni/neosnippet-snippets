@@ -11,6 +11,7 @@ snippet interface
     } // interface: $1
 
 snippet method
+alias fn
     ${1:void} ${2:#:method}(${3}) ${4:throws}
     {
         ${0:TARGET}
@@ -194,6 +195,7 @@ snippet main
     } // class: `expand('%:p:t:r')`
 
 snippet println
+alias sout
 options word
     System.out.println(${1});
 

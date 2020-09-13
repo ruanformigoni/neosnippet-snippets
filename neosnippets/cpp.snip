@@ -4,7 +4,7 @@ snippet concept
 alias cp
 options word
 abbr concept Integral<T>
- template<typename ${1}>
+ template<${1}>
  concept ${2} = ${3}
  ${0}
 
@@ -59,16 +59,23 @@ abbr        for (:) {}
   for (${1:auto&&} ${2:var} : ${3:container})
   {
     ${0:TARGET}
-  } // for $2 : $3
+  } // for
 
 # lambda expression ( C++11 feature )
-snippet     alamb
+snippet     lb
 abbr        [](){}
-  [${1}](${2})${3}{ ${4:TARGET} }${0:;}
+  [${1}](${2})${3}{ ${0} };
 
-snippet     lamb
+snippet     lbm
 abbr        [](){}
-  auto ${1:VAR} = [${2}](${3})${4}{ ${5:TARGET} }${0:;}
+  auto ${1:VAR} = [${2}](${3})${4}
+  {
+    ${0}
+  };
+
+snippet     lbv
+abbr        [](){}
+  auto ${1:VAR} = [${2}](${3})${4}{ ${0} };
 
 # scoped enumeration ( C++11 feature )
 snippet     enum_scoped
@@ -129,6 +136,18 @@ options     word
 snippet     cerr
 options     word
  std::cerr << ${1:TARGET} << std::endl; ${0}
+
+snippet     print
+alias       pr
+abbr        "fmt::print()"
+options     word
+ fmt::print("{${1}}", ${2});${0}
+
+snippet     format
+alias       fmt
+abbr        "fmt::format()"
+options     word
+ fmt::format("{${1}}", ${2});${0}
 
 
 # Tests {{{
